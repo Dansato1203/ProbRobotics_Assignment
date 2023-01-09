@@ -62,7 +62,7 @@ for i in range(6):
 	ax[i].set_ylim(0, 0.09)
 
 fig.tight_layout()
-fig.savefig("../image/Before_Trial.png", bbox_inches="tight")
+fig.savefig("../image/02_Before_Trial.png", bbox_inches="tight")
 
 
 # 改良後
@@ -96,4 +96,4 @@ for i in range(6):
 	ax[i].set_ylim(0, 0.09)
 
 fig.tight_layout()
-fig.savefig("../image/After_Trial.png", bbox_inches="tight")
+fig.savefig("../image/02_After_Trial.png", bbox_inches="tight")
