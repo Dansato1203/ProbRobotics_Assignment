@@ -60,6 +60,7 @@ def main():
 
 	bayes = Bayes_theorem()
 
+	# 改良前
 	p1 = Plot_graph()
 
 	prior_dist = bayes.Prior_dist() # 事前分布
