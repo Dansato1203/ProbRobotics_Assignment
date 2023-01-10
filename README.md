@@ -98,7 +98,7 @@ https://github.com/Dansato1203/ProbRobotics_Assignment/blob/543ffeed90a6d8f2c568
   
 試行回数を100回に増やした場合の確率分布は以下の通りとなった．  
 <img src=https://github.com/Dansato1203/ProbRobotics_Assignment/blob/main/image/Compare_dist_100Trial.png width="500">  
-試行回数を100回に増やすと，分布の重なる部分がなくなった．  
+試行回数を100回に増やすと，分布の重なる部分がごく小さくなった．  
 このことから，改良後の完走率が改良前の完走率より小さくなる可能性はほぼないといえる．  
 よって，改良の前後での結果を比較を行うために試行をする回数はより多いほうがよいと考えられる．
 
