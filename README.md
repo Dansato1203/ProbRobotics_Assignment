@@ -103,4 +103,4 @@ https://github.com/Dansato1203/ProbRobotics_Assignment/blob/543ffeed90a6d8f2c568
 よって，改良の前後での結果を比較を行うために試行をする回数はより多いほうがよいと考えられる．
 
 ## LICENSE
-This repository is licensed under The MIT Licensee, see (LICENSE)[https://github.com/Dansato1203/ProbRobotics_Assignment/blob/main/LICENSE].
+This repository is licensed under The MIT Licensee, see [LICENSE](https://github.com/Dansato1203/ProbRobotics_Assignment/blob/main/LICENSE).
