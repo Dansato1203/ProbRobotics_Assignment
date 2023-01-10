@@ -3,6 +3,12 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.axisartist.axislines import SubplotZero
 
 class Bayes_theorem:
+	def __init__(self):
+		# 離散化したt
+		self.t = []
+		for i in range(0, 101, 1):
+			self.t.append(i / 100)
+
 	# 事前分布を求める
 	def Prior_dist(self):
 		return np.full(101, 1/101)
@@ -17,6 +23,17 @@ class Bayes_theorem:
 	# 事後分布を求める
 	def Posterior_dist(self, P_a_t, Prior_dist):
 		return  P_a_t * Prior_dist / sum(P_a_t * Prior_dist)
+
+	# 試行ごとの分布を計算
+	def Calc_dist(self, Trial_list, Posterior_dist_list):
+		prior_dist = self.Prior_dist() # 事前分布
+		Posterior_dist_list.append(prior_dist) #プロットするために記録
+
+		for idx, trial in enumerate(Trial_list):
+			p_a_t = self.P_a_t(trial, self.t) # P(a|t)を計算
+			posterior_dist = self.Posterior_dist(p_a_t, prior_dist) # 更新した事前分布とP(a|t)から事後分布を計算
+			prior_dist = posterior_dist # i回目までの試行を反映したP(t|a_1:t)を事前分布とみなす
+			Posterior_dist_list.append(posterior_dist) # プロット用に記録
 
 # グラフをプロットする
 class Plot_graph:
@@ -48,11 +65,6 @@ class Plot_graph:
 		fig.savefig("../image/" + graph_name + ".png", bbox_inches="tight")
 
 def main():
-	# 離散化したt
-	t = []
-	for i in range(0, 101, 1):
-		t.append(i / 100)
-
 	# 改良前での5回の試行
 	Before_Trial = ["完走", "失敗", "失敗", "完走", "完走"]
 	# 改良後での5回の試行
@@ -63,36 +75,22 @@ def main():
 	# 改良前
 	p1 = Plot_graph()
 
-	prior_dist = bayes.Prior_dist() # 事前分布
-	p1.Posterior_dist_list.append(prior_dist) #プロットするために記録
-
 	# 試行ごとに計算
-	for trial in Before_Trial:
-		p_a_t = bayes.P_a_t(trial, t) # P(a|t)を計算
-		posterior_dist = bayes.Posterior_dist(p_a_t, prior_dist) # 事前分布とP(a|t)から事後分布を計算
-		prior_dist = posterior_dist # i回目までの試行を反映したP(t|a_1:t)を事前分布とみなす
-		p1.Posterior_dist_list.append(posterior_dist) # プロット用に記録
+	bayes.Calc_dist(Before_Trial, p1.Posterior_dist_list)
 
 	# 試行ごとのtの分布をプロット
 	Title_list = ["Before Experiment", "1st Trial (Success)", "2nd Trial (Fail)", "3rd Trial (Fail)", "4th Trial (Success)", "5th Trial (Sucess)"]
-	p1.Plot(t, Title_list, "02_Before_Trial")
+	p1.Plot(bayes.t, Title_list, "02_Before_Trial")
 
 	# 改良後
 	p2 = Plot_graph()
 
-	prior_dist = bayes.Prior_dist() # 事前分布
-	p2.Posterior_dist_list.append(prior_dist) #プロットするために記録
-
 	# 試行ごとに計算
-	for trial in After_Trial:
-		p_a_t = bayes.P_a_t(trial, t) # P(a|t)を計算
-		posterior_dist = bayes.Posterior_dist(p_a_t, prior_dist) # 事前分布とP(a|t)から事後分布を計算
-		prior_dist = posterior_dist # i回目までの試行を反映したP(t|a_1:t)を事前分布とみなす
-		p2.Posterior_dist_list.append(posterior_dist) # プロット用に記録
+	bayes.Calc_dist(After_Trial, p2.Posterior_dist_list)
 
 	# 試行ごとのtの分布をプロット
 	Title_list = ["Before Experiment", "1st Trial (Success)", "2nd Trial (Success)", "3rd Trial (Success)", "4th Trial (Success)", "5th Trial (Sucess)"]
-	p2.Plot(t, Title_list, "02_After_Trial")
+	p2.Plot(bayes.t, Title_list, "02_After_Trial")
 
 if __name__ == "__main__":
 	main()
