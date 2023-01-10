@@ -1,7 +1,13 @@
 # ProbRobotics_Assignment
 確率ロボティクスの課題提出用のリポジトリ
 
-## 作成したプログラムによる結果
+## 実行環境
+- OS : Ubuntu 20.04
+- Python : 3.8.10
+- NumPy : 1.23.4  
+- Matplotlib : 3.6.1  
+
+## 作成したプログラムとその結果
 ### Number_of_Trials.py
 C君が行った5回の試行の結果を信頼できるか検証するプログラム．  
 ```Calc_FinishRate```関数によって完走率を計算する．  
@@ -95,3 +101,6 @@ https://github.com/Dansato1203/ProbRobotics_Assignment/blob/543ffeed90a6d8f2c568
 試行回数を100回に増やすと，分布の重なる部分がなくなった．  
 このことから，改良後の完走率が改良前の完走率より小さくなる可能性はほぼないといえる．  
 よって，改良の前後での結果を比較を行うために試行をする回数はより多いほうがよいと考えられる．
+
+## LICENSE
+This repository is licensed under The MIT Licensee, see (LICENSE)[https://github.com/Dansato1203/ProbRobotics_Assignment/blob/main/LICENSE].
