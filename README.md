@@ -1,5 +1,5 @@
 # ProbRobotics_Assignment
-確率ロボティクスの課題提出用のリポジトリ
+確率ロボティクスの課題提出用リポジトリ
 
 ## 実行環境
 - OS : Ubuntu 20.04
